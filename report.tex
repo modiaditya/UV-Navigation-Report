@@ -95,7 +95,7 @@ Veteran Ave route had a good mix of buildings and trees, while Levering Ave/Gayl
 \end{center}  
 \end{figure} 
 \subsection{Sensor Device Selection}
-Data collection had two main components, UV readings and GPS readings. For UV Readings, a sensor built at UCLA was used ~\ref{fig:uvSensor}. The reason for selecting this sensor was the fact that all our requirements were satisfied. The device had 2 sensors for measuring UVA  UVB each. The device also had a bluetooth which facilitated transfer of data from the device to a computer. Since there was no GPS device built on the UV sensor, Android device was used to collect GPS readings. After guaging various options for a GPS software on the android market, GPS logger software ~\ref{fig:gpsLogger} was finally selected to log the GPS data since it was very flexible and provided different options to log the data. GPS logger used to log the GPS readings, which were at a later stage merged with the UV sensor readings to get the UV exposure at specific latitude and longitude points. 
+Data collection had two main components, UV readings and GPS readings. For UV Readings, a sensor built at UCLA was used ~\ref{fig:uvSensor}. The reason for selecting this sensor was the fact that all our requirements were satisfied. The device had 2 sensors for measuring UVA  UVB each. The units of data output is $mW/nm^2$. The device also had a bluetooth which facilitated transfer of data from the device to a computer. Since there was no GPS device built on the UV sensor, Android device was used to collect GPS readings. After guaging various options for a GPS software on the android market, GPS logger software ~\ref{fig:gpsLogger} was finally selected to log the GPS data since it was very flexible and provided different options to log the data. GPS logger used to log the GPS readings, which were at a later stage merged with the UV sensor readings to get the UV exposure at specific latitude and longitude points. 
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.55]{uvSensor.png}
@@ -130,19 +130,19 @@ Data cleansing is the most important step of any project where data analysis is 
 \includegraphics[scale=0.45]{transformedData.png}
 \caption{\small \sl Transformed Sensor Readings\label{fig:transformedData}}
 \end{center}
-\end{figure} The GPS readings from the GPS logger software are shown in Fig \ref{fig:gpsReadings}. 
+\end{figure}. The first column indicates seconds, the second indicates UV readings and the third column hold cumulative UV readings. The GPS readings from the GPS logger software are shown in Fig \ref{fig:gpsReadings}. 
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.45]{gpsReadings.png}
 \caption{\small \sl Raw GPS Readings\label{fig:gpsReadings}}
 \end{center}
-\end{figure}
+\end{figure} which hold data for time, latitude, longitude, alevation, accuracy, bearing and speed. 
 A scipt is written to join the GPS sensor readings and UV sensor readings. A sample of readings after joining the GPS readings and UV Sensor readings is shown in Fig \ref{fig:joinedReadings}.\begin{figure}
 \begin{center}
 \includegraphics[scale=0.45]{joinedReadings.png}
 \caption{\small \sl UV and GPS readings joined\label{fig:joinedReadings}}
 \end{center}
-\end{figure} Also, there were couple of sensors for both UVA and UVB each. So the data was analyzed to determine which of the two sensors readings were more reliable. After careful analysis, one of the two sensors was taken into consideration. As seen in the Fig \ref{fig:dataAnalysis}, a correlation is obervered between first sensors of UVA and UVB. Hence, reeadings from first sensors for both UVA and UVB are considered and readings from other sensors are discarded. There were also some random erroneous readings reported for the sensors sometimes which were discarded. After perfoming all of the above mentioned steps, the data was clean and ready for analysis.
+\end{figure}. The first column hold data for time, latitude, langitude, UVA1, UVA2, UVB1, UVB2. Also, there were couple of sensors for both UVA and UVB each. So the data was analyzed to determine which of the two sensors readings were more reliable. After careful analysis, one of the two sensors was taken into consideration. As seen in the Fig \ref{fig:dataAnalysis}, a correlation is obervered between first sensors of UVA and UVB. Hence, reeadings from first sensors for both UVA and UVB are considered and readings from other sensors are discarded. There were also some random erroneous readings reported for the sensors sometimes which were discarded. After perfoming all of the above mentioned steps, the data was clean and ready for analysis.
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.45]{dataAnalysis.png}
@@ -168,11 +168,11 @@ The main aim of the project is to suggest the best route to the user out of the 
 \end{center}
 \end{figure}
 
-In order to determine the various alternate route options that can be taken to travel from source to destination, Google Maps \cite{googleMapsOriginal} data is used. It returns the various routes that can be taken which are called as “Legs” and the various sections of the roads that changes are called as “Steps”. In the route selected for the experiment, each of the red lines in Figure ~\ref{fig:Routes} indicate each leg and each of the red lines between the markers in Figure ~\ref{fig:stepsInALeg} indicate each step. Minimum number of points needed to assert the UV level with a certain confidence was to be found. Analysis was initially done by taking one step and finding the number of points required on that step. However after realizing that the step was too big to perform analysis, decision was made to break each step into smaller segments. After analyzing various options an Open Street Map API  \cite{openStreetMapsDirections} was used. When passed two end points, the API returns all the nodes in its database which come in between the end points. Thus, a pair of nodes would form a segment. Again, scripts were written to parse the data and extracting the information required for the project. Figure ~\ref{fig:segmentsInAStep} indicates segments within a single step. 
+In order to determine the various alternate route options that can be taken to travel from source to destination, Google Maps \cite{googleMapsOriginal} data is used. Open Street Maps option was also considered. Google Maps returned alternate route options when source and destination locations were passed where as in Open Street Maps, the output was in form of the nodes en route to the destination. There is a database of nodes on any path which is returned by Open Street Maps. Since alternate paths were necessary in this project, google maps was used. Google Maps returns the various routes that can be taken which are called as {\it Legs} and the various sections of the roads that changes are called as {\it Steps}. In the route selected for the experiment, each of the red lines in Figure ~\ref{fig:Routes} indicate each leg and each of the red lines between the markers in Figure ~\ref{fig:stepsInALeg} indicate each step. Minimum number of points needed to assert the UV level with a certain confidence was to be found. Analysis was initially done by taking one step and finding the number of points required on that step. However after realizing that the step was too big to perform analysis, decision was made to break each step into smaller segments. After analyzing various options an Open Street Map API  \cite{openStreetMapsDirections} was used. When passed two end points, the API returns all the nodes in its database which come in between the end points. Thus, a pair of nodes would form a segment. Again, scripts were written to parse the data and extracting the information required for the project. Figure ~\ref{fig:segmentsInAStep} indicates segments within a single step. 
 
 
 
-Data is analyzed to determine the minimum number of points required to get the accuracy of UVA above 75\% and accuracy of UVB above 95\%. Bootstrapping method is used to determine the minimum number of points. Bootstraping works as follows:
+Data is analyzed to determine the minimum number of points required to get the accuracy of UVA above 75\% and accuracy of UVB above 95\%. The accuracy limits are selected from \cite{uvguardian} since extensive research was done and also the sensor used was the same one as used in this experiment. Bootstrapping method is used to determine the minimum number of points. Bootstraping works as follows:
 \\
 \begin{center}
 { 	\boxed{
@@ -251,7 +251,7 @@ No of Readings & UVA Accuracy & UVB Accuracy \\
 7 & 78.30137 & 97.91901\\
 \hline
 \end{tabular}
-\caption{\small \sl Accuracy table for bootstraping}
+\caption{\small \sl Accuracy table for bootstraping}\label{seg1accuracy}
 \end{table}
 
 
@@ -265,7 +265,7 @@ No of Readings & UVA Accuracy & UVB Accuracy \\
 \end{figure}
 
 
-As observed from the table that UVA takes 4 samples to reach the accuracy of 75\% and UVB take 4 readings to reach the accuracy of 95\%. 
+As observed from the table \ref{seg1accuracy} that UVA takes 4 samples to reach the accuracy of 75\% and UVB take 4 readings to reach the accuracy of 95\%. 
 \newpage
 
 
@@ -306,7 +306,7 @@ No of Readings & UVA Accuracy & UVB Accuracy \\
 7 & 78.30137 & 97.96218\\
 \hline
 \end{tabular}
-\caption{\small \sl Accuracy table for bootstraping}
+\caption{\small \sl Accuracy table for bootstraping}\label{seg2accuracy}
 \end{table}
 
 
@@ -320,7 +320,7 @@ No of Readings & UVA Accuracy & UVB Accuracy \\
 \end{figure}
 
 
-As observed from the table that UVA takes 4 samples to reach the accuracy of 75\% and UVB take 2 readings to reach the accuracy of 95\%. 
+As observed from the table \ref{seg2accuracy} that UVA takes 4 samples to reach the accuracy of 75\% and UVB take 2 readings to reach the accuracy of 95\%. 
 \newpage\newpage
 \begin{center}
 Segment 3 as seen in Fig. ~\ref{fig:segment3}. \\
@@ -360,7 +360,7 @@ No of Readings & UVA Accuracy & UVB Accuracy \\
 7 & 93.55506 & 97.49347\\
 \hline
 \end{tabular}
-\caption{\small \sl Accuracy table for bootstraping}
+\caption{\small \sl Accuracy table \ref{seg3accuracy} for bootstraping}\label{seg3accuracy}
 \end{table}
 
 
@@ -412,7 +412,7 @@ No of Readings & UVA Accuracy & UVB Accuracy \\
 7 & 83.41866 & 96.61768\\
 \hline
 \end{tabular}
-\caption{\small \sl Accuracy table for bootstraping}
+\caption{\small \sl Accuracy table  for bootstraping}\label{seg4accuracy}
 \end{table}
 
 
@@ -426,7 +426,7 @@ No of Readings & UVA Accuracy & UVB Accuracy \\
 \end{figure}
 
 
-As observed from the table that UVA takes 3 samples to reach the accuracy of 75\% and UVB take 4 readings to reach the accuracy of 95\%. 
+As observed from the table \ref{seg4accuracy} that UVA takes 3 samples to reach the accuracy of 75\% and UVB take 4 readings to reach the accuracy of 95\%. 
 \newpage\newpage
 \begin{center}
 Segment 5 as seen in Fig. ~\ref{fig:segment5}. \\
@@ -464,7 +464,7 @@ No of Readings & UVA Accuracy & UVB Accuracy \\
 7 & 88.63886 & 98.75971\\
 \hline
 \end{tabular}
-\caption{\small \sl Accuracy table for bootstraping}
+\caption{\small \sl Accuracy table for bootstraping}\label{seg5accuracy}
 \end{table}
 
 
@@ -478,7 +478,7 @@ No of Readings & UVA Accuracy & UVB Accuracy \\
 \end{figure}
 
 
-As observed from the table that UVA takes 2 samples to reach the accuracy of 75\% and UVB take 1 readings to reach the accuracy of 95\%. 
+As observed from the table \ref{seg5accuracy} that UVA takes 2 samples to reach the accuracy of 75\% and UVB take 1 readings to reach the accuracy of 95\%. 
 \newpage\newpage
 \begin{center}
 Segment 6 as seen in Fig. ~\ref{fig:segment6}. \\
@@ -516,7 +516,7 @@ No of Readings & UVA Accuracy & UVB Accuracy \\
 7 & 98.67633 & 98.67633\\
 \hline
 \end{tabular}
-\caption{\small \sl Accuracy table for bootstraping}
+\caption{\small \sl Accuracy table for bootstraping}\label{seg6accuracy}
 \end{table}
 
 
@@ -530,7 +530,7 @@ No of Readings & UVA Accuracy & UVB Accuracy \\
 \end{figure}
 
 
-As observed from the table that UVA takes 2 samples to reach the accuracy of 75\% and UVB take 3 readings to reach the accuracy of 95\%. 
+As observed from the table \ref{seg6accuracy} that UVA takes 2 samples to reach the accuracy of 75\% and UVB take 3 readings to reach the accuracy of 95\%. 
 \newpage\newpage
 \begin{center}
 Segment 7 as seen in Fig. ~\ref{fig:segment7}. \\
@@ -568,7 +568,7 @@ No of Readings & UVA Accuracy & UVB Accuracy \\
 7 & 91.17483 & 97.67854\\
 \hline
 \end{tabular}
-\caption{\small \sl Accuracy table for bootstraping}
+\caption{\small \sl Accuracy table for bootstraping}\label{seg7accuracy}
 \end{table}
 
 
@@ -582,7 +582,7 @@ No of Readings & UVA Accuracy & UVB Accuracy \\
 \end{figure}
 
 
-As observed from the table that UVA takes 3 samples to reach the accuracy of 75\% and UVB take 4 readings to reach the accuracy of 95\%. 
+As observed from the table \ref{seg7accuracy} that UVA takes 3 samples to reach the accuracy of 75\% and UVB take 4 readings to reach the accuracy of 95\%. 
 \newpage
 
 
@@ -606,31 +606,35 @@ For instance, if the segments in Figure ~\ref{fig:lessReadings} is considered. T
 
 \newpage
 \subsection{Web Service Developement}
-Web Service was developed to provide API to the developers to make use of the common platform and develop navigation applications based in UV data. The Web Service developed is similar to the Google Maps Web Service \cite{googleWebService} with extra information about the UV levels along the route. A choice was to be made whether to display the output in XML format or JSON. Finally, the output was in JSON format since its easier to read. Its also less decoding effort to programmers as compared to XML output. The inputs to the web service are source latitude, source longitude, destination latitude, destination longitude and UV criteria. UV criteria is whether route with minimum UVA or minimum UVB or an average of UVA and UVB is required. A part of sample output from the webservice is in Fig 
+Web Service was developed to provide API to the developers to make use of the common platform and develop navigation applications based in UV data. The Web Service developed is similar to the Google Maps Web Service \cite{googleWebService} with extra information about the UV levels along the route. Initially, data is pulled from Google Maps where information about routes, distance between the source and destination, time to travel and most importantly alternate route information is pulled. After parsing the information, we get the alternate routes i.e. the {\it legs}. For each {\it leg}, information about {\it steps} in each route is also retrived from Google Maps API. For each {\it step}, Open Street Maps API is called to get the segments inside each step. Then, UV data about each segment is retrieved from the database. After calculating the UV levels on each of the paths, an output of a path with minimum UV levels is passed to the caller. Thus, data from Google Maps is joined with data from Open Street Maps and joined with the UV data on a path and returned to the caller. A choice was to be made whether to display the output in XML format or JSON. Finally, the output was in JSON format since its easier to read. Its also less decoding effort to programmers as compared to XML output. The inputs to the web service are source latitude, source longitude, destination latitude, destination longitude and UV criteria. UV criteria is whether route with minimum UVA or minimum UVB or an average of UVA and UVB is required. A part of sample output from the webservice is in Fig 
 \ref{fig:webServiceOutput}
-\begin{figure}[hb]
+\begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.4]{webServiceOutput.png}
 \caption{\small \sl Sample Web Service Output}
 \label{fig:webServiceOutput}
 \end{center}
 \end{figure}
+\clearpage
+
+\newpage
 \subsection{Navigation Web Application}
 A Web Application is built in order to consume the web service built. The purpose of the web application is to serve as a basis for developers to use the system and build applications on top of it. The web application shown in Fig \ref{sampleWebApplication} is built using the web service and google maps javascript API to render the maps on the web page. Similarly other desktop and mobile applications can also be built. When entered the source and destination latitude and longitude and selecting the UV criteria, the application will suggest the most optimum route based upon the selected criteria as showin in Fig \ref{fig:webapp}.
-\begin{figure}[hb]
+\begin{figure}[ht]
 \begin{center}
 \includegraphics[scale=0.30]{webapp1.png}
 \caption{\small \sl a. UV Navigation Web Application }
 \label{fig:webapp}
 \end{center}
 \end{figure}
-\begin{figure}
+\begin{figure}[ht]
 \begin{center}
 \includegraphics[scale=0.35]{webapp2.png}
 \caption{\small \sl b. UV Navigation Web Application }
 \label{fig:webapp}
 \end{center}
 \end{figure}
+\clearpage
 \newpage
 \section{Experiment}
 Taking the results from the data analysis that was done, experiments were performed to verify whether the desired accuracy was achieved. As per the observations from the data analysis,in the worst case, 6 points on a segment are necessary to get accuracy above 75\% for UVA and 4 points on a segment are necessary to get accuracy above 95\% for UVB.
@@ -653,69 +657,44 @@ for(i in 1:100){
 \end{lstlisting}
 
 Again, some segments were selected. Accuracy was determined by considering the worst case as well as average case scenario. The results were as follows for different segments of the road. \\
-\mbox{}\\
-Segment 1 as seen in Fig. ~\ref{fig:veteranSatellite}. \\
-Average Case Accuraccy\\
-UVA:  75.93203\\
-UVB:  96.50077\\
-Worst Case Accuracy\\
-UVA:  79.50551\\
-UVB:  96.74856 \\
-\mbox{}\\
-Segment 2 as seen in Fig. ~\ref{fig:segment2}. \\
-Average Case Accuraccy\\
-UVA:  74.38072\\
-UVB:  96.12223\\
-Worst Case Accuracy\\
-UVA:  81.07674\\
-UVB:  96.06205\\
-\mbox{}\\
-Segment 3 as seen in Fig. ~\ref{fig:segment3}. \\
-Average Case Accuraccy\\
-UVA:  81.29109\\
-UVB:  95.44681\\
-Worst Case Accuracy\\
-UVA:  87.52028\\
-UVB:  95.89465  \\
-\mbox{}\\
-Segment 4 as seen in Fig. ~\ref{fig:segment4}. \\
-Average Case Accuraccy\\
-UVA:  88.40942\\
-UVB:  95.25212\\
-Worst Case Accuracy\\
-UVA:  91.58414\\
-UVB:  95.81699\\
-\mbox{}\\
-Segment 5 as seen in Fig. ~\ref{fig:segment5}. \\
-Average Case Accuraccy\\
-UVA:  83.29114\\
-UVB:  97.71054\\
-Worst Case Accuracy\\
-UVA:  88.49399\\
-UVB:  98.27896\\
-\mbox{}\\
-Segment 6 as seen in Fig. ~\ref{fig:segment6}. \\
-Average Case Accuraccy\\
-UVA:  92.15421\\
-UVB:  96.50476\\
-Worst Case Accuracy\\
-UVA:  95.55486\\
-UVB:  97.02755\\
-\mbox{}\\
-Segment 7 as seen in Fig. ~\ref{fig:segment7}. \\
-Average Case Accuraccy\\
-UVA:  89.63042\\
-UVB:  94.82353\\
-Worst Case Accuracy\\
-UVA:  91.7044\\
-UVB:  96.18621\\
-
-
-From the obersvation of all the readings, it could be inferred that if 6 samples to estimate UVA and 4 to estimate UVB are taken, then the accuracy remains above the thresholds that are required.
-
 \newpage
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+&&UVA & UVB \\ 
+\hline
+Route 1 & Average Case & 75.93203 & 96.50077 \\\cline{2-4}
+&  Worst Case & 79.50551 &  96.74856\\\cline{2-4}
+\hline 
+Route 2 & Average Case & 74.38072 & 96.12223 \\\cline{2-4}
+&  Worst Case & 81.07674 &  96.06205\\\cline{2-4}
+\hline 
+Route 3 & Average Case & 81.29109 & 95.44681 \\\cline{2-4}
+&  Worst Case & 87.52028 &  95.89465\\\cline{2-4}
+\hline 
+Route 4 & Average Case & 88.40942 & 95.25212 \\\cline{2-4}
+&  Worst Case & 91.58414 &  95.81699\\\cline{2-4}
+\hline 
+Route 5 & Average Case & 83.29114 &  97.71054 \\\cline{2-4}
+&  Worst Case & 88.49399 &  98.27896\\\cline{2-4}
+\hline 
+Route 6 & Average Case & 92.15421 & 96.50476 \\\cline{2-4}
+&  Worst Case & 95.55486 &  97.02755\\\cline{2-4}
+\hline 
+Route 7 & Average Case & 89.63042 & 94.82353 \\\cline{2-4}
+&  Worst Case & 91.7044 &  96.18621\\\cline{2-4}
+\hline 
+
+\end{tabular}
+\caption{\small \sl Experiment Results}\label{exp}
+\end{table}
+
+From the obersvation in table \ref{exp} of all the readings, it could be inferred that if 6 samples to estimate UVA and 4 to estimate UVB are taken, then the accuracy remains above the thresholds that are required.
+\newpage
+
 \section{Future Work}
-The work can be extened to do analysis on different paths. That way, the current number of samples of can be reaffirmed. Since the accuracy of UVA is aimed to be 75\%, a more accurate UVA sensor could be used and a higer UVA accuracy could be aimed for. UV sensors could be interfaced directly with the android device which could facilitate more flexibilty to gather data. After that is achieved, more users could be encouraged to gather UV data. In this way, crowd sourcing could be used to populate the database eventually helping uses navigate more routes.
+The work can be extened to do analysis on different paths. That way, the current number of samples of can be reaffirmed. Since the accuracy of UVA is aimed to be 75\%, a more accurate UVA sensor could be used and a higer UVA accuracy could be aimed for. The current accuracy limits are selected from \cite{uvguardian} since extensive research was done and also the sensor used was the same one as used in this experiment. UV sensors could be interfaced directly with the android device which could facilitate more flexibilty to gather data. After that is achieved, more users could be encouraged to gather UV data. In this way, crowd sourcing could be used to populate the database eventually helping uses navigate more routes.
 \newpage
 \section{Conclusion}
 It could be concluded that in the worst case, 6 points on a segment are necessary to get accuracy above 75\% for UVA and 4 points on a segment are necessary to get accuracy above 95\% for UVB. In average case, 4 points on a segment are necessary to get accuracy above 75\% for UVA and  3 points on a segment are necessary to get accuracy above 95\% for UVB. The number of points on a segment is not dependend on the length of the segment since the length of the segments are generally small. A web service was developed to estimate UV levels on a path and route the user through the path having the minimum UV value.
