@@ -198,7 +198,7 @@ Data collection had two main components, UV readings and GPS readings. For UV Re
 \end{figure}
 
 \subsection{Data Collection}
-For collecting the readings, actual walks were done on the selected route ~\ref{fig:Route}. The walks were done by holding the sensor device, a laptop to transfer the readings and an android phone to collect the GPS readings. Readings were taken between 9a.m. and 11a.m. on couple of sunny days with clear sky. Protection from the sun rays may be different on different sides of the road depening on height of the buildings, presense of trees, time of days etc. Thus, readings were taken by walking on both sides of the road wherever possible. Figure ~\ref{fig:dataPoints} shows a plot of points where readings were taken by walking along the road.
+For collecting the readings, actual walks were done on the selected route ~\ref{fig:Route}. The walks were done by holding the sensor device, a laptop to transfer the readings and an android phone to collect the GPS readings. Readings were taken on 2012-10-16 between 9:05a.m. and 9:42a.m., 2012-10-23 between 9:14a.m. and 9:46a.m., 2012-11-03 between 9:11a.m. and 10:05a.m. , 2012-11-10 between 9:24a.m and 12:12p.m. with clear sky. Protection from the sun rays may be different on different sides of the road depening on height of the buildings, presense of trees, time of days etc. Thus, readings were taken by walking on both sides of the road wherever possible. Figure ~\ref{fig:dataPoints} shows a plot of points where readings were taken by walking along the road.
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.35]{dataPoints.png}
@@ -225,7 +225,7 @@ Data cleansing is the most important step of any project where data analysis is 
 \caption{\small \sl Raw GPS Readings\label{fig:gpsReadings}}
 \end{center}
 \end{figure} which hold data for time, latitude, longitude, alevation, accuracy, bearing and speed. 
-A scipt is written to join the GPS sensor readings and UV sensor readings. A sample of readings after joining the GPS readings and UV Sensor readings is shown in Fig \ref{fig:joinedReadings}.\begin{figure}
+A script is written to join the GPS sensor readings and UV sensor readings. A sample of readings after joining the GPS readings and UV Sensor readings is shown in Fig \ref{fig:joinedReadings}.\begin{figure}
 \begin{center}
 \includegraphics[scale=0.45]{joinedReadings.png}
 \caption{\small \sl UV and GPS readings joined\label{fig:joinedReadings}}
@@ -256,7 +256,7 @@ The main aim of the project is to suggest the best route to the user out of the 
 \end{center}
 \end{figure}
 
-In order to determine the various alternate route options that can be taken to travel from source to destination, Google Maps \cite{googleMapsOriginal} data is used. Open Street Maps option was also considered. Google Maps returned alternate route options when source and destination locations were passed where as in Open Street Maps, the output was in form of the nodes en route to the destination. There is a database of nodes on any path which is returned by Open Street Maps. Since alternate paths were necessary in this project, google maps was used. Google Maps returns the various routes that can be taken which are called as {\it Legs} and the various sections of the roads that changes are called as {\it Steps}. In the route selected for the experiment, each of the red lines in Figure ~\ref{fig:Routes} indicate each leg and each of the red lines between the markers in Figure ~\ref{fig:stepsInALeg} indicate each step. Minimum number of points needed to assert the UV level with a certain confidence was to be found. Analysis was initially done by taking one step and finding the number of points required on that step. However after realizing that the step was too big to perform analysis, decision was made to break each step into smaller segments. After analyzing various options an Open Street Map API  \cite{openStreetMapsDirections} was used. When passed two end points, the API returns all the nodes in its database which come in between the end points. Thus, a pair of nodes would form a segment. Again, scripts were written to parse the data and extracting the information required for the project. Figure ~\ref{fig:segmentsInAStep} indicates segments within a single step. 
+In order to determine the various alternate route options that can be taken to travel from source to destination, Google Maps \cite{googleMapsOriginal} data is used. Open Street Maps option was also considered. Google Maps returned alternate route options when source and destination locations were passed where as in Open Street Maps, the output was in form of the nodes en route to the destination. There is a database of nodes on any path which is returned by Open Street Maps. Since alternate paths were necessary in this project, google maps was used. Google Maps returns the various routes that can be taken which are called as {\it Legs} and the various sections of the roads that changes are called as {\it Steps}. In the route selected for the experiment, each of the red lines in Figure ~\ref{fig:Route} indicate each leg and each of the red lines between the markers in Figure ~\ref{fig:stepsInALeg} indicate each step. Minimum number of points needed to assert the UV level with a certain confidence was to be found. Analysis was initially done by taking one step and finding the number of points required on that step. However after realizing that the step was too big to perform analysis, decision was made to break each step into smaller segments. After analyzing various options an Open Street Map API  \cite{openStreetMapsDirections} was used. When passed two end points, the API returns all the nodes in its database which come in between the end points. Thus, a pair of nodes would form a segment. Again, scripts were written to parse the data and extracting the information required for the project. Figure ~\ref{fig:segmentsInAStep} indicates segments within a single step. 
 
 
 
@@ -270,11 +270,14 @@ Data is analyzed to determine the minimum number of points required to get the a
 		\\    \text{2. Select one point randomly}
 		\\    \text{3. Calculate the accuracy with respect to the actual}
 		\\ \quad	\text{averge}
-		\\	\text{4. Select one more point randomly}
+		\\	\text{4. Select one more point randomly with replacement }
+		\\ \quad	\text{since the result should not be biased and chosing}
+		\\ \quad	\text{a random point is independent of the choice }
+		\\ \quad	\text{of sample made earlier }
 		\\	\text{5. Take the avegare of all the points selected till now}
 		\\    \text{6. Calculate the accuracy with respect to the actual}
 		\\ \quad	\text{ averge}
-		\\	\text{7. Repeat from Step 4 till desired accuract is achieved}
+		\\	\text{7. Repeat from Step 4 till desired accuracy is achieved}
 
 		\end{array}
 }
@@ -293,7 +296,7 @@ for(noOfSample in 1:10){
   uvb = route$uvb #getUVB Readings
   uvbReadingsVector <- vector()
   for(i in 1:10){
-    uvbSample = sample(uvb,noOfSamples)
+    uvbSample = sample(uvb,noOfSamples, replace=TRUE)
     sampleMean = mean(uvbSample)
     accuracy =  abs((trueMean-sampleMean)/ sampleMean*100)
   }
@@ -688,7 +691,7 @@ There may be some segments, which may not have the minimum number of readings th
 \label{fig:lessReadings}
 \end{center}
 \end{figure}
-The problem of some segments not having desired number of readings is countered in the way mentioned below. In that case, a weighted average of the readings from the neighboring segments is taken. The weight is in terms of how far the segment is from the segment, which is currently under consideration and also, the number of readings that the current segment has. The immediately neighboring segments have a weight of 0.5, the weight is decreased by 0.1 as segments farther from the segment under consideration is taken into account for calculating the UV values. This method was selected since segments, which are near the segment under consideration, have a high correlation of readings with the segment. The window of neighboring segments is expanded till the desired number of readings for the segment is achieved. 
+The problem of some segments not having desired number of readings is countered in the way mentioned below. In that case, a weighted average of the readings from the neighboring segments is taken. The weight is in terms of how far the segment is from the segment, which is currently under consideration and also, the number of readings that the current segment has i.e. the segment which is closer to the segment under consideration and has more readings is given more weight that the segment otherwise since there would be more confidence in the closer segments than segments which are not close relatively. The immediately neighboring segments have a weight of 0.5, the weight is decreased by 0.1 as segments farther from the segment under consideration is taken into account for calculating the UV values. This method was selected since segments, which are near the segment under consideration, have a high correlation of readings with the segment. The window of neighboring segments is expanded till the desired number of readings for the segment is achieved. 
 
 For instance, if the segments in Figure ~\ref{fig:lessReadings} is considered. The segements end points are marked by blue colored markers and the red color markers indicate readings at those points. As observed in the figure, the number of readings are less than the minimum number of readings required. So, a weighted average of the neighboring segments is taken. Since both the segments are immediate neighbors, weight would eventually be proportional to the number of readings in each segment as there would be more confidence in considering readings from the segment that has more readings as compared to considering the segments with less number of readings. 
 
@@ -707,19 +710,19 @@ Web Service was developed to provide API to the developers to make use of the co
 
 \newpage
 \subsection{Navigation Web Application}
-A Web Application is built in order to consume the web service built. The purpose of the web application is to serve as a basis for developers to use the system and build applications on top of it. The web application shown in Fig \ref{sampleWebApplication} is built using the web service and google maps javascript API to render the maps on the web page. Similarly other desktop and mobile applications can also be built. When entered the source and destination latitude and longitude and selecting the UV criteria, the application will suggest the most optimum route based upon the selected criteria as showin in Fig \ref{fig:webapp}.
+A Web Application is built in order to consume the web service built. The purpose of the web application is to serve as a basis for developers to use the system and build applications on top of it. The web application shown in Fig \ref{fig:webappx} is built using the web service and google maps javascript API to render the maps on the web page. Similarly other desktop and mobile applications can also be built. When entered the source and destination latitude and longitude and selecting the UV criteria, the application will suggest the most optimum route based upon the selected criteria as shown in Fig \ref{fig:webapp2}.
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[scale=0.30]{webapp1.png}
-\caption{\small \sl a. UV Navigation Web Application }
-\label{fig:webapp}
+\caption{\small \sl  UV Navigation Web Application }
+\label{fig:webappx}
 \end{center}
 \end{figure}
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[scale=0.35]{webapp2.png}
-\caption{\small \sl b. UV Navigation Web Application }
-\label{fig:webapp}
+\caption{\small \sl UV Navigation Web Application }
+\label{fig:webapp2}
 \end{center}
 \end{figure}
 \clearpage
@@ -736,7 +739,7 @@ sampleSet = 4 # for worst case scenario
 uvb = route$uvb # get UVB values
 uvbAccuracy <- vector()
 for(i in 1:100){
-  uvbSample = sample(uvb,sampleSet)
+  uvbSample = sample(uvb,sampleSet, replace=TRUE)
   trueMean = mean(route5$uvb)
   sampleMean = mean(uvbSample)
   t = abs(100-abs((trueMean-sampleMean)/ sampleMean*100))

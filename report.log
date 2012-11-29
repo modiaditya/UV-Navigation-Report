@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  25 NOV 2012 04:24
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  29 NOV 2012 11:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -353,9 +353,6 @@ LaTeX Warning: Label `fig:lessReadings' multiply defined.
 
 LaTeX Warning: Label `fig:lessReadings' multiply defined.
 
-
-LaTeX Warning: Label `fig:webapp' multiply defined.
-
 )
 \openout1 = `report.aux'.
 
@@ -609,12 +606,8 @@ File: segmentsInAStep.png Graphic file (type png)
 <use segmentsInAStep.png>
 Package pdftex.def Info: segmentsInAStep.png used on input line 254.
 (pdftex.def)             Requested size: 199.8998pt x 186.54973pt.
-
-
-LaTeX Warning: Reference `fig:Routes' on page 16 undefined on input line 259.
-
-[16pdfTeX warning (ext4): destination with the same identifier (name{figure.10}
-) has been already used, duplicate ignored
+ [16pdfTeX warning (ext4): destination with the same identifier (name{figure.10
+}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -638,44 +631,44 @@ Underfull \hbox (badness 10000) in paragraph at lines 263--265
 
 [18]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 289.
-LaTeX Font Info:    Try loading font information for OML+ptm on input line 290.
+nput line 292.
+LaTeX Font Info:    Try loading font information for OML+ptm on input line 293.
 
  (/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/omlptm.fd
 File: omlptm.fd 
 )
 LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 290.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 293.
  [19]
-<veteranMap.png, id=224, 853.1875pt x 568.1225pt>
+<veteranMap.png, id=225, 853.1875pt x 568.1225pt>
 File: veteranMap.png Graphic file (type png)
  <use veteranMap.png>
-Package pdftex.def Info: veteranMap.png used on input line 314.
+Package pdftex.def Info: veteranMap.png used on input line 317.
 (pdftex.def)             Requested size: 273.02557pt x 181.8029pt.
 
-<veteranSatellite.png, id=225, 856.19875pt x 566.115pt>
+<veteranSatellite.png, id=226, 856.19875pt x 566.115pt>
 File: veteranSatellite.png Graphic file (type png)
 
 <use veteranSatellite.png>
-Package pdftex.def Info: veteranSatellite.png used on input line 315.
+Package pdftex.def Info: veteranSatellite.png used on input line 318.
 (pdftex.def)             Requested size: 273.9892pt x 181.16049pt.
  [20pdfTeX warning (ext4): destination with the same identifier (name{figure.13
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.320 \newpage
+l.323 \newpage
                <./veteranMap.png> <./veteranSatellite.png>]
-<uvaAccuracy.png, id=231, 362.3136pt x 238.0092pt>
+<uvaAccuracy.png, id=232, 362.3136pt x 238.0092pt>
 File: uvaAccuracy.png Graphic file (type png)
  <use uvaAccuracy.png>
-Package pdftex.def Info: uvaAccuracy.png used on input line 348.
+Package pdftex.def Info: uvaAccuracy.png used on input line 351.
 (pdftex.def)             Requested size: 181.15636pt x 119.0043pt.
 
-<uvbAccuracy.png, id=232, 362.3136pt x 217.7736pt>
+<uvbAccuracy.png, id=233, 362.3136pt x 217.7736pt>
 File: uvbAccuracy.png Graphic file (type png)
  <use uvbAccuracy.png>
-Package pdftex.def Info: uvbAccuracy.png used on input line 349.
+Package pdftex.def Info: uvbAccuracy.png used on input line 352.
 (pdftex.def)             Requested size: 199.27309pt x 119.77583pt.
 
 [21pdfTeX warning (ext4): destination with the same identifier (name{table.1}) 
@@ -683,42 +676,42 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.357 \newpage
+l.360 \newpage
               pdfTeX warning (ext4): destination with the same identifier (name
 {figure.14}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.357 \newpage
+l.360 \newpage
                <./uvaAccuracy.png> <./uvbAccuracy.png>]
-<segment2a.png, id=243, 847.165pt x 563.10374pt>
+<segment2a.png, id=244, 847.165pt x 563.10374pt>
 File: segment2a.png Graphic file (type png)
  <use segment2a.png>
-Package pdftex.def Info: segment2a.png used on input line 369.
+Package pdftex.def Info: segment2a.png used on input line 372.
 (pdftex.def)             Requested size: 271.09833pt x 180.19687pt.
 
-<segment2b.png, id=244, 849.1725pt x 563.10374pt>
+<segment2b.png, id=245, 849.1725pt x 563.10374pt>
 File: segment2b.png Graphic file (type png)
  <use segment2b.png>
-Package pdftex.def Info: segment2b.png used on input line 370.
+Package pdftex.def Info: segment2b.png used on input line 373.
 (pdftex.def)             Requested size: 271.74075pt x 180.19687pt.
  [22pdfTeX warning (ext4): destination with the same identifier (name{figure.15
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.375 \newpage
+l.378 \newpage
                <./segment2a.png> <./segment2b.png>]
-<segment2uva.png, id=250, 362.3136pt x 238.0092pt>
+<segment2uva.png, id=251, 362.3136pt x 238.0092pt>
 File: segment2uva.png Graphic file (type png)
  <use segment2uva.png>
-Package pdftex.def Info: segment2uva.png used on input line 403.
+Package pdftex.def Info: segment2uva.png used on input line 406.
 (pdftex.def)             Requested size: 181.15636pt x 119.0043pt.
 
-<segment2uvb.png, id=251, 362.3136pt x 241.8636pt>
+<segment2uvb.png, id=252, 362.3136pt x 241.8636pt>
 File: segment2uvb.png Graphic file (type png)
  <use segment2uvb.png>
-Package pdftex.def Info: segment2uvb.png used on input line 404.
+Package pdftex.def Info: segment2uvb.png used on input line 407.
 (pdftex.def)             Requested size: 181.15636pt x 120.9315pt.
 
 [23pdfTeX warning (ext4): destination with the same identifier (name{table.2}) 
@@ -726,42 +719,42 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.412 \newpage
+l.415 \newpage
               \newpagepdfTeX warning (ext4): destination with the same identifi
 er (name{figure.16}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.412 \newpage
+l.415 \newpage
               \newpage <./segment2uva.png> <./segment2uvb.png>]
-<segment3a.png, id=262, 842.14626pt x 560.0925pt>
+<segment3a.png, id=263, 842.14626pt x 560.0925pt>
 File: segment3a.png Graphic file (type png)
  <use segment3a.png>
-Package pdftex.def Info: segment3a.png used on input line 421.
+Package pdftex.def Info: segment3a.png used on input line 424.
 (pdftex.def)             Requested size: 269.49231pt x 179.23326pt.
 
-<segment3b.png, id=263, 851.18pt x 565.11125pt>
+<segment3b.png, id=264, 851.18pt x 565.11125pt>
 File: segment3b.png Graphic file (type png)
  <use segment3b.png>
-Package pdftex.def Info: segment3b.png used on input line 422.
+Package pdftex.def Info: segment3b.png used on input line 425.
 (pdftex.def)             Requested size: 272.38315pt x 180.8393pt.
  [24pdfTeX warning (ext4): destination with the same identifier (name{figure.17
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.427 \newpage
+l.430 \newpage
                <./segment3a.png> <./segment3b.png>]
-<segment3uva.png, id=270, 362.3136pt x 238.0092pt>
+<segment3uva.png, id=271, 362.3136pt x 238.0092pt>
 File: segment3uva.png Graphic file (type png)
  <use segment3uva.png>
-Package pdftex.def Info: segment3uva.png used on input line 457.
+Package pdftex.def Info: segment3uva.png used on input line 460.
 (pdftex.def)             Requested size: 181.15636pt x 119.0043pt.
 
-<segment3uvb.png, id=271, 362.3136pt x 241.8636pt>
+<segment3uvb.png, id=272, 362.3136pt x 241.8636pt>
 File: segment3uvb.png Graphic file (type png)
  <use segment3uvb.png>
-Package pdftex.def Info: segment3uvb.png used on input line 458.
+Package pdftex.def Info: segment3uvb.png used on input line 461.
 (pdftex.def)             Requested size: 181.15636pt x 120.9315pt.
 
 [25pdfTeX warning (ext4): destination with the same identifier (name{table.3}) 
@@ -769,42 +762,42 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.466 \newpage
+l.469 \newpage
               \newpagepdfTeX warning (ext4): destination with the same identifi
 er (name{figure.18}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.466 \newpage
+l.469 \newpage
               \newpage <./segment3uva.png> <./segment3uvb.png>]
-<segment4a.png, id=282, 845.1575pt x 561.09625pt>
+<segment4a.png, id=283, 845.1575pt x 561.09625pt>
 File: segment4a.png Graphic file (type png)
  <use segment4a.png>
-Package pdftex.def Info: segment4a.png used on input line 475.
+Package pdftex.def Info: segment4a.png used on input line 478.
 (pdftex.def)             Requested size: 270.45592pt x 179.55446pt.
 
-<segment4b.png, id=283, 853.1875pt x 559.08875pt>
+<segment4b.png, id=284, 853.1875pt x 559.08875pt>
 File: segment4b.png Graphic file (type png)
  <use segment4b.png>
-Package pdftex.def Info: segment4b.png used on input line 476.
+Package pdftex.def Info: segment4b.png used on input line 479.
 (pdftex.def)             Requested size: 273.02557pt x 178.91205pt.
  [26pdfTeX warning (ext4): destination with the same identifier (name{figure.19
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.481 \newpage
+l.484 \newpage
                <./segment4a.png> <./segment4b.png>]
-<segment4uva.png, id=289, 362.3136pt x 238.0092pt>
+<segment4uva.png, id=290, 362.3136pt x 238.0092pt>
 File: segment4uva.png Graphic file (type png)
  <use segment4uva.png>
-Package pdftex.def Info: segment4uva.png used on input line 509.
+Package pdftex.def Info: segment4uva.png used on input line 512.
 (pdftex.def)             Requested size: 181.15636pt x 119.0043pt.
 
-<segment4uvb.png, id=290, 362.3136pt x 241.8636pt>
+<segment4uvb.png, id=291, 362.3136pt x 241.8636pt>
 File: segment4uvb.png Graphic file (type png)
  <use segment4uvb.png>
-Package pdftex.def Info: segment4uvb.png used on input line 510.
+Package pdftex.def Info: segment4uvb.png used on input line 513.
 (pdftex.def)             Requested size: 181.15636pt x 120.9315pt.
 
 [27pdfTeX warning (ext4): destination with the same identifier (name{table.4}) 
@@ -812,42 +805,42 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.518 \newpage
+l.521 \newpage
               \newpagepdfTeX warning (ext4): destination with the same identifi
 er (name{figure.20}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.518 \newpage
+l.521 \newpage
               \newpage <./segment4uva.png> <./segment4uvb.png>]
-<segment5a.png, id=301, 853.1875pt x 561.09625pt>
+<segment5a.png, id=302, 853.1875pt x 561.09625pt>
 File: segment5a.png Graphic file (type png)
  <use segment5a.png>
-Package pdftex.def Info: segment5a.png used on input line 527.
+Package pdftex.def Info: segment5a.png used on input line 530.
 (pdftex.def)             Requested size: 273.02557pt x 179.55446pt.
 
-<segment5b.png, id=302, 849.1725pt x 561.09625pt>
+<segment5b.png, id=303, 849.1725pt x 561.09625pt>
 File: segment5b.png Graphic file (type png)
  <use segment5b.png>
-Package pdftex.def Info: segment5b.png used on input line 528.
+Package pdftex.def Info: segment5b.png used on input line 531.
 (pdftex.def)             Requested size: 271.74075pt x 179.55446pt.
  [28pdfTeX warning (ext4): destination with the same identifier (name{figure.21
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.533 \newpage
+l.536 \newpage
                <./segment5a.png> <./segment5b.png>]
-<segment5uva.png, id=308, 362.3136pt x 238.0092pt>
+<segment5uva.png, id=309, 362.3136pt x 238.0092pt>
 File: segment5uva.png Graphic file (type png)
  <use segment5uva.png>
-Package pdftex.def Info: segment5uva.png used on input line 561.
+Package pdftex.def Info: segment5uva.png used on input line 564.
 (pdftex.def)             Requested size: 181.15636pt x 119.0043pt.
 
-<segment5uvb.png, id=309, 362.3136pt x 241.8636pt>
+<segment5uvb.png, id=310, 362.3136pt x 241.8636pt>
 File: segment5uvb.png Graphic file (type png)
  <use segment5uvb.png>
-Package pdftex.def Info: segment5uvb.png used on input line 562.
+Package pdftex.def Info: segment5uvb.png used on input line 565.
 (pdftex.def)             Requested size: 181.15636pt x 120.9315pt.
 
 [29pdfTeX warning (ext4): destination with the same identifier (name{table.5}) 
@@ -855,42 +848,42 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.570 \newpage
+l.573 \newpage
               \newpagepdfTeX warning (ext4): destination with the same identifi
 er (name{figure.22}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.570 \newpage
+l.573 \newpage
               \newpage <./segment5uva.png> <./segment5uvb.png>]
-<segment6a.png, id=321, 847.165pt x 559.08875pt>
+<segment6a.png, id=322, 847.165pt x 559.08875pt>
 File: segment6a.png Graphic file (type png)
  <use segment6a.png>
-Package pdftex.def Info: segment6a.png used on input line 579.
+Package pdftex.def Info: segment6a.png used on input line 582.
 (pdftex.def)             Requested size: 271.09833pt x 178.91205pt.
 
-<segment6b.png, id=322, 840.13875pt x 560.0925pt>
+<segment6b.png, id=323, 840.13875pt x 560.0925pt>
 File: segment6b.png Graphic file (type png)
  <use segment6b.png>
-Package pdftex.def Info: segment6b.png used on input line 580.
+Package pdftex.def Info: segment6b.png used on input line 583.
 (pdftex.def)             Requested size: 268.84988pt x 179.23326pt.
  [30pdfTeX warning (ext4): destination with the same identifier (name{figure.23
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.585 \newpage
+l.588 \newpage
                <./segment6a.png> <./segment6b.png>]
-<segment6uva.png, id=328, 362.3136pt x 238.0092pt>
+<segment6uva.png, id=329, 362.3136pt x 238.0092pt>
 File: segment6uva.png Graphic file (type png)
  <use segment6uva.png>
-Package pdftex.def Info: segment6uva.png used on input line 613.
+Package pdftex.def Info: segment6uva.png used on input line 616.
 (pdftex.def)             Requested size: 181.15636pt x 119.0043pt.
 
-<segment6uvb.png, id=329, 362.3136pt x 241.8636pt>
+<segment6uvb.png, id=330, 362.3136pt x 241.8636pt>
 File: segment6uvb.png Graphic file (type png)
  <use segment6uvb.png>
-Package pdftex.def Info: segment6uvb.png used on input line 614.
+Package pdftex.def Info: segment6uvb.png used on input line 617.
 (pdftex.def)             Requested size: 181.15636pt x 120.9315pt.
 
 [31pdfTeX warning (ext4): destination with the same identifier (name{table.6}) 
@@ -898,42 +891,42 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.622 \newpage
+l.625 \newpage
               \newpagepdfTeX warning (ext4): destination with the same identifi
 er (name{figure.24}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.622 \newpage
+l.625 \newpage
               \newpage <./segment6uva.png> <./segment6uvb.png>]
-<segment7a.png, id=341, 846.16125pt x 559.08875pt>
+<segment7a.png, id=342, 846.16125pt x 559.08875pt>
 File: segment7a.png Graphic file (type png)
  <use segment7a.png>
-Package pdftex.def Info: segment7a.png used on input line 631.
+Package pdftex.def Info: segment7a.png used on input line 634.
 (pdftex.def)             Requested size: 270.77713pt x 178.91205pt.
 
-<segment7b.png, id=342, 844.15375pt x 552.0625pt>
+<segment7b.png, id=343, 844.15375pt x 552.0625pt>
 File: segment7b.png Graphic file (type png)
  <use segment7b.png>
-Package pdftex.def Info: segment7b.png used on input line 632.
+Package pdftex.def Info: segment7b.png used on input line 635.
 (pdftex.def)             Requested size: 270.13472pt x 176.6636pt.
  [32pdfTeX warning (ext4): destination with the same identifier (name{figure.25
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.637 \newpage
+l.640 \newpage
                <./segment7a.png> <./segment7b.png>]
-<segment7uva.png, id=348, 362.3136pt x 238.0092pt>
+<segment7uva.png, id=349, 362.3136pt x 238.0092pt>
 File: segment7uva.png Graphic file (type png)
  <use segment7uva.png>
-Package pdftex.def Info: segment7uva.png used on input line 665.
+Package pdftex.def Info: segment7uva.png used on input line 668.
 (pdftex.def)             Requested size: 181.15636pt x 119.0043pt.
 
-<segment7uvb.png, id=349, 362.3136pt x 241.8636pt>
+<segment7uvb.png, id=350, 362.3136pt x 241.8636pt>
 File: segment7uvb.png Graphic file (type png)
  <use segment7uvb.png>
-Package pdftex.def Info: segment7uvb.png used on input line 666.
+Package pdftex.def Info: segment7uvb.png used on input line 669.
 (pdftex.def)             Requested size: 181.15636pt x 120.9315pt.
 
 [33pdfTeX warning (ext4): destination with the same identifier (name{table.7}) 
@@ -941,18 +934,18 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.674 \newpage
+l.677 \newpage
               pdfTeX warning (ext4): destination with the same identifier (name
 {figure.26}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.674 \newpage
+l.677 \newpage
                <./segment7uva.png> <./segment7uvb.png>]
-<lessReadings.png, id=360, 630.355pt x 543.02875pt>
+<lessReadings.png, id=361, 630.355pt x 543.02875pt>
 File: lessReadings.png Graphic file (type png)
  <use lessReadings.png>
-Package pdftex.def Info: lessReadings.png used on input line 686.
+Package pdftex.def Info: lessReadings.png used on input line 689.
 (pdftex.def)             Requested size: 220.62755pt x 190.0629pt.
 
 [34pdfTeX warning (ext4): destination with the same identifier (name{figure.27}
@@ -960,13 +953,13 @@ Package pdftex.def Info: lessReadings.png used on input line 686.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.692 
+l.695 
        <./lessReadings.png>] [35]
-<webServiceOutput.png, id=373, 757.83125pt x 639.38875pt>
+<webServiceOutput.png, id=374, 757.83125pt x 639.38875pt>
 File: webServiceOutput.png Graphic file (type png)
 
 <use webServiceOutput.png>
-Package pdftex.def Info: webServiceOutput.png used on input line 701.
+Package pdftex.def Info: webServiceOutput.png used on input line 704.
 (pdftex.def)             Requested size: 303.12714pt x 255.75096pt.
 
 
@@ -977,25 +970,21 @@ e.28}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.706 \clearpage
+l.709 \clearpage
                  <./webServiceOutput.png>]
-
-LaTeX Warning: Reference `sampleWebApplication' on page 38 undefined on input l
-ine 710.
-
-<webapp1.png, id=386, 1238.6275pt x 504.88625pt>
+<webapp1.png, id=388, 1238.6275pt x 504.88625pt>
 File: webapp1.png Graphic file (type png)
  <use webapp1.png>
-Package pdftex.def Info: webapp1.png used on input line 713.
+Package pdftex.def Info: webapp1.png used on input line 716.
 (pdftex.def)             Requested size: 371.59113pt x 151.46703pt.
 
-<webapp2.png, id=387, 1234.6125pt x 636.3775pt>
+<webapp2.png, id=389, 1234.6125pt x 636.3775pt>
 File: webapp2.png Graphic file (type png)
  <use webapp2.png>
-Package pdftex.def Info: webapp2.png used on input line 720.
+Package pdftex.def Info: webapp2.png used on input line 723.
 (pdftex.def)             Requested size: 432.12085pt x 222.73546pt.
 
-Overfull \hbox (42.12085pt too wide) in paragraph at lines 720--721
+Overfull \hbox (42.12085pt too wide) in paragraph at lines 723--724
  [] 
  []
 
@@ -1006,15 +995,15 @@ as been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.725 \clearpage
+l.728 \clearpage
                  <./webapp1.png>] [39pdfTeX warning (ext4): destination with th
 e same identifier (name{figure.30}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.725 \clearpage
+l.728 \clearpage
                  <./webapp2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 747--748
+Underfull \hbox (badness 10000) in paragraph at lines 750--751
 
  []
 
@@ -1025,38 +1014,35 @@ Underfull \hbox (badness 10000) in paragraph at lines 747--748
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.782 \newpage
+l.785 \newpage
               ] [42] [43]
-Underfull \hbox (badness 10000) in paragraph at lines 795--796
+Underfull \hbox (badness 10000) in paragraph at lines 798--799
 []\OT1/ptm/m/n/12 http://articles.mercola.com/sites/articles/archive/2012/03/26
 /maximizing-
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 806.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 809.
 [44]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 806.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 809.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 806.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 806.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 809.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 809.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: B5B52E314034A073C2700776D1041C08;1011.
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 806.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 809.
  ) 
 Here is how much of TeX's memory you used:
- 7795 strings out of 493488
- 113120 string characters out of 3141326
- 267063 words of memory out of 3000000
- 10823 multiletter control sequences out of 15000+200000
+ 7794 strings out of 493488
+ 113100 string characters out of 3141326
+ 270123 words of memory out of 3000000
+ 10822 multiletter control sequences out of 15000+200000
  26419 words of font info for 64 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 30i,10n,32p,1735b,1141s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 30i,10n,32p,1734b,1141s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/te
 xlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texli
@@ -1065,10 +1051,10 @@ e/2012/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2012/tex
 mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2012/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/
 urw/times/utmri8a.pfb>
-Output written on report.pdf (44 pages, 12079868 bytes).
+Output written on report.pdf (44 pages, 12079736 bytes).
 PDF statistics:
- 493 PDF objects out of 1000 (max. 8388607)
- 377 compressed objects within 4 object streams
+ 495 PDF objects out of 1000 (max. 8388607)
+ 379 compressed objects within 4 object streams
  133 named destinations out of 1000 (max. 500000)
  341 words of extra memory for PDF output out of 10000 (max. 10000000)
 
