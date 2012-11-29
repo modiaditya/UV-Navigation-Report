@@ -22,7 +22,7 @@ for(ss in 1:10){
   uva = route$uva
   uva10 <- vector()
   for(i in 1:10){
-    uvaSample = sample(uva,sampleA)
+    uvaSample = sample(uva,sampleA,replace=TRUE)
     trueMeanA = mean(route$uva)
     sampleMeanA = mean(uvaSample)
     tA = abs(100-abs((trueMeanA-sampleMeanA)/ sampleMeanA*100))
