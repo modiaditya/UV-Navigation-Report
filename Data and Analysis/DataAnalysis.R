@@ -4,7 +4,7 @@ for(ss in 1:10){
   uvb = route$uvb
   uvb10 <- vector()
   for(i in 1:10){
-    uvbSample = sample(uvb,sample)
+    uvbSample = sample(uvb,sample, replace = TRUE)
     trueMean = mean(route$uvb)
     sampleMean = mean(uvbSample)
     t = abs(100-abs((trueMean-sampleMean)/ sampleMean*100))
