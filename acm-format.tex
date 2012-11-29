@@ -92,7 +92,7 @@ Veteran Ave route had a good mix of buildings and trees, while Levering Ave/Gayl
 \end{center}  
 \end{figure} 
 \subsection{Sensor Device Selection}
-Data collection had two main components, UV readings and GPS readings. For UV Readings, a sensor built at UCLA was used ~\ref{fig:uvSensor}. The reason for selecting this sensor was the fact that all our requirements were satisfied. The device had 2 sensors for measuring UVA  UVB each. The device also had a bluetooth which facilitated transfer of data from the device to a computer. Since there was no GPS device built on the UV sensor, Android device was used to collect GPS readings. After guaging various options for a GPS software on the android market, GPS logger software ~\ref{fig:gpsLogger} was finally selected to log the GPS data since it was very flexible and provided different options to log the data. GPS logger used to log the GPS readings, which were at a later stage merged with the UV sensor readings to get the UV exposure at specific latitude and longitude points. 
+Data collection had two main components, UV readings and GPS readings. For UV Readings, a sensor built at UCLA was used ~\ref{fig:uvSensor}. The reason for selecting this sensor was the fact that all our requirements were satisfied. The device had 2 sensors for measuring UVA  UVB each. The units of data output is $mW/nm^2$. The device also had a bluetooth which facilitated transfer of data from the device to a computer. Since there was no GPS device built on the UV sensor, Android device was used to collect GPS readings. After guaging various options for a GPS software on the android market, GPS logger software ~\ref{fig:gpsLogger} was finally selected to log the GPS data since it was very flexible and provided different options to log the data. GPS logger used to log the GPS readings, which were at a later stage merged with the UV sensor readings to get the UV exposure at specific latitude and longitude points. 
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.45]{uvSensor.png}
@@ -107,7 +107,7 @@ Data collection had two main components, UV readings and GPS readings. For UV Re
 \end{figure}
 
 \subsection{Data Collection}
-For collecting the readings, actual walks were done on the selected route ~\ref{fig:Route}. The walks were done by holding the sensor device, a laptop to transfer the readings and an android phone to collect the GPS readings. Readings were taken between 9a.m. and 11a.m. on couple of sunny days with clear sky. Protection from the sun rays may be different on different sides of the road depening on height of the buildings, presense of trees, time of days etc. Thus, readings were taken by walking on both sides of the road wherever possible. Figure ~\ref{fig:dataPoints} shows a plot of points where readings were taken by walking along the road.
+For collecting the readings, actual walks were done on the selected route ~\ref{fig:Route}. The walks were done by holding the sensor device, a laptop to transfer the readings and an android phone to collect the GPS readings. Readings were taken on 2012-10-16 between 9:05a.m. and 9:42a.m., 2012-10-23 between 9:14a.m. and 9:46a.m., 2012-11-03 between 9:11a.m. and 10:05a.m. , 2012-11-10 between 9:24a.m and 12:12p.m. with clear sky. Protection from the sun rays may be different on different sides of the road depening on height of the buildings, presense of trees, time of days etc. Thus, readings were taken by walking on both sides of the road wherever possible. Figure ~\ref{fig:dataPoints} shows a plot of points where readings were taken by walking along the road.
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.35]{dataPoints.png}
@@ -129,7 +129,7 @@ The main aim of the project is to suggest the best route to the user out of the 
 \end{center}
 \end{figure}
 
-In order to determine the various alternate route options that can be taken to travel from source to destination, Google Maps \cite{googleMapsOriginal} data is used. It returns the various routes that can be taken which are called as “Legs” and the various sections of the roads that changes are called as “Steps”. In the route selected for the experiment, each of the red lines in Figure ~\ref{fig:Route} indicate each leg and each of the red lines between the markers in Figure ~\ref{fig:stepsInALeg} indicate each step. Minimum number of points needed to assert the UV level with a certain confidence was to be found. Analysis was initially done by taking one step and finding the number of points required on that step. However after realizing that the step was too big to perform analysis, decision was made to break each step into smaller segments. After analyzing various options an Open Street Map API  \cite{openStreetMapsDirections} was used. When passed two end points, the API returns all the nodes in its database which come in between the end points. Thus, a pair of nodes would form a segment. Again, scripts were written to parse the data and extracting the information required for the project. Figure ~\ref{fig:segmentsInAStep} indicates segments within a single step. 
+In order to determine the various alternate route options that can be taken to travel from source to destination, Google Maps \cite{googleMapsOriginal} data is used. Open Street Maps option was also considered. Google Maps returned alternate route options when source and destination locations were passed where as in Open Street Maps, the output was in form of the nodes en route to the destination. There is a database of nodes on any path which is returned by Open Street Maps. Since alternate paths were necessary in this project, google maps was used. Google Maps returns the various routes that can be taken which are called as {\it Legs} and the various sections of the roads that changes are called as {\it Steps}. In the route selected for the experiment, each of the red lines in Figure ~\ref{fig:Route} indicate each leg and each of the red lines between the markers in Figure ~\ref{fig:stepsInALeg} indicate each step. Minimum number of points needed to assert the UV level with a certain confidence was to be found. Analysis was initially done by taking one step and finding the number of points required on that step. However after realizing that the step was too big to perform analysis, decision was made to break each step into smaller segments. After analyzing various options an Open Street Map API  \cite{openStreetMapsDirections} was used. When passed two end points, the API returns all the nodes in its database which come in between the end points. Thus, a pair of nodes would form a segment. Again, scripts were written to parse the data and extracting the information required for the project. Figure ~\ref{fig:segmentsInAStep} indicates segments within a single step. 
 
 
 \begin{figure}
@@ -139,9 +139,10 @@ In order to determine the various alternate route options that can be taken to t
 \end{center}
 \end{figure}
 
-Data is analyzed to determine the minimum number of points required to get the accuracy of UVA above 75\% and accuracy of UVB above 95\%. Bootstrapping method is used to determine the minimum number of points. Bootstraping works as follows:
+Data is analyzed to determine the minimum number of points required to get the accuracy of UVA above 75\% and accuracy of UVB above 95\%. The accuracy limits are selected from \cite{uvguardian} since extensive research was done and also the sensor used was the same one as used in this experiment. Bootstrapping method is used to determine the minimum number of points. Bootstraping works as follows:
 \\
 
+\begin{center}
 { 	\boxed{
 		\begin{array}{l}
 			\text{1. Take the average of all the points on a particular }
@@ -149,17 +150,22 @@ Data is analyzed to determine the minimum number of points required to get the a
 		\\    \text{2. Select one point randomly}
 		\\    \text{3. Calculate the accuracy with respect to the actual}
 		\\ \quad	\text{averge}
-		\\	\text{4. Select one more point randomly}
+		\\	\text{4. Select one more point randomly with replacement }
+		\\ \quad	\text{since the result should not be biased and chosing}
+		\\ \quad	\text{a random point is independent of the choice }
+		\\ \quad	\text{of sample made earlier }
 		\\	\text{5. Take the avegare of all the points selected till now}
 		\\    \text{6. Calculate the accuracy with respect to the actual}
 		\\ \quad	\text{ averge}
-		\\	\text{7. Repeat from Step 4 till desired accuract is achieved}
+		\\	\text{7. Repeat from Step 4 till desired accuracy is achieved}
 
 		\end{array}
 }
+
 \begin{center} 
 {\small \sl Algorithm for Boostraping \\}
 \end{center} }
+\end{center}
 
 \lstset{caption=R Code for Bootstraping,breaklines=true, tabsize=4,    
         frame=single}
@@ -170,7 +176,7 @@ for(noOfSample in 1:10){
   uvb = route$uvb #getUVB Readings
   uvbReadingsVector <- vector()
   for(i in 1:10){
-    uvbSample = sample(uvb,noOfSamples)
+    uvbSample = sample(uvb,noOfSamples, replace=TRUE)
     sampleMean = mean(uvbSample)
     accuracy =  abs((trueMean-sampleMean)/ sampleMean*100)
   }
@@ -226,7 +232,7 @@ In average case, 4 points on a segment are necessary to get accuracy above 75\% 
 \subsubsection{Devising a method to handle segments with less number of samples than minimum required}
 There may be some segments, which may not have the minimum number of readings that is necessary to assert the UV values like the segment in the Figure ~\ref{fig:lessReadings}. 
 
-The problem of some segments not having desired number of readings is countered in the way mentioned below. In that case, a weighted average of the readings from the neighboring segments is taken. The weight is in terms of how far the segment is from the segment, which is currently under consideration and also, the number of readings that the current segment has. The immediately neighboring segments have a weight of 0.5, the weight is decreased by 0.1 as segments farther from the segment under consideration is taken into account for calculating the UV values. This method was selected since segments, which are near the segment under consideration, have a high correlation of readings with the segment. The window of neighboring segments is expanded till the desired number of readings for the segment is achieved. 
+The problem of some segments not having desired number of readings is countered in the way mentioned below. In that case, a weighted average of the readings from the neighboring segments is taken. The weight is in terms of how far the segment is from the segment, which is currently under consideration and also, the number of readings that the current segment has i.e. the segment which is closer to the segment under consideration and has more readings is given more weight that the segment otherwise since there would be more confidence in the closer segments than segments which are not close relatively. The immediately neighboring segments have a weight of 0.5, the weight is decreased by 0.1 as segments farther from the segment under consideration is taken into account for calculating the UV values. This method was selected since segments, which are near the segment under consideration, have a high correlation of readings with the segment. The window of neighboring segments is expanded till the desired number of readings for the segment is achieved. 
 
 For instance, if the segments in Figure ~\ref{fig:lessReadings} is considered. The segements end points are marked by blue colored markers and the red color markers indicate readings at those points. As observed in the figure, the number of readings are less than the minimum number of readings required. So, a weighted average of the neighboring segments is taken. Since both the segments are immediate neighbors, weight would eventually be proportional to the number of readings in each segment as there would be more confidence in considering readings from the segment that has more readings as compared to considering the segments with less number of readings. 
 \begin{figure}[h]
@@ -239,7 +245,7 @@ For instance, if the segments in Figure ~\ref{fig:lessReadings} is considered. T
 
 
 \subsection{Web Service Developement}
-Web Service was developed to provide API to the developers to make use of the common platform and develop navigation applications based in UV data. The Web Service developed is similar to the Google Maps Web Service ~\ref{googleMapWebservice} with extra information about the UV levels along the route. A choice was to be made whether to display the output in XML format or JSON. Finally, the output was in JSON format since its easier to read. Its also less decoding effort to programmers as compared to XML output. The inputs to the web service are source latitude, source longitude, destination latitude, destination longitude and UV criteria. UV criteria is whether route with minimum UVA or minimum UVB or an average of UVA and UVB is required. A part of sample output from the webservice is in Fig \ref{fig:webServiceOutput}
+Web Service was developed to provide API to the developers to make use of the common platform and develop navigation applications based in UV data. The Web Service developed is similar to the Google Maps Web Service \cite{googleWebService} with extra information about the UV levels along the route. Initially, data is pulled from Google Maps where information about routes, distance between the source and destination, time to travel and most importantly alternate route information is pulled. After parsing the information, we get the alternate routes i.e. the {\it legs}. For each {\it leg}, information about {\it steps} in each route is also retrived from Google Maps API. For each {\it step}, Open Street Maps API is called to get the segments inside each step. Then, UV data about each segment is retrieved from the database. After calculating the UV levels on each of the paths, an output of a path with minimum UV levels is passed to the caller. Thus, data from Google Maps is joined with data from Open Street Maps and joined with the UV data on a path and returned to the caller. A choice was to be made whether to display the output in XML format or JSON. Finally, the output was in JSON format since its easier to read. Its also less decoding effort to programmers as compared to XML output. The inputs to the web service are source latitude, source longitude, destination latitude, destination longitude and UV criteria. UV criteria is whether route with minimum UVA or minimum UVB or an average of UVA and UVB is required. A part of sample output from the webservice is in Fig \ref{fig:webServiceOutput}
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.35]{webServiceOutput.png}
@@ -249,7 +255,7 @@ Web Service was developed to provide API to the developers to make use of the co
 \end{figure}
 
 \subsection{Navigation Web Application}
-A Web Application is built in order to consume the web service built. The purpose of the web application is to serve as a basis for developers to use the system and build applications on top of it. The web application shown in Fig \ref{sampleWebApplication} is built using the web service and google maps javascript API to render the maps on the web page. Similarly other desktop and mobile applications can also be built. When entered the source and destination latitude and longitude and selecting the UV criteria, the application will suggest the most optimum route based upon the selected criteria as showin in Fig \ref{fig:webapp}.
+A Web Application is built in order to consume the web service built. The purpose of the web application is to serve as a basis for developers to use the system and build applications on top of it. The web application shown in Fig \ref{fig:webapp} is built using the web service and google maps javascript API to render the maps on the web page. Similarly other desktop and mobile applications can also be built. When entered the source and destination latitude and longitude and selecting the UV criteria, the application will suggest the most optimum route based upon the selected criteria as showin in Fig \ref{fig:webapp}.
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.19]{webapp1.png}
@@ -271,7 +277,7 @@ sampleSet = 4 # for worst case scenario
 uvb = route$uvb # get UVB values
 uvbAccuracy <- vector()
 for(i in 1:100){
-  uvbSample = sample(uvb,sampleSet)
+  uvbSample = sample(uvb,sampleSet, replace=TRUE)
   trueMean = mean(route5$uvb)
   sampleMean = mean(uvbSample)
   t = abs(100-abs((trueMean-sampleMean)/ sampleMean*100))
@@ -280,8 +286,7 @@ for(i in 1:100){
 \end{lstlisting}
 
 \section{Future Work}
-The work can be extened to do analysis on different paths. That way, the current number of samples of can be reaffirmed. Since the accuracy of UVA is aimed to be 75\%, a more accurate UVA sensor could be used and a higer UVA accuracy could be aimed for. UV sensors could be interfaced directly with the android device which could facilitate more flexibilty to gather data. After that is achieved, more users could be encouraged to gather UV data. In this way, crowd sourcing could be used to populate the database eventually helping uses navigate more routes.
-
+The work can be extened to do analysis on different paths. That way, the current number of samples of can be reaffirmed. Since the accuracy of UVA is aimed to be 75\%, a more accurate UVA sensor could be used and a higer UVA accuracy could be aimed for. The current accuracy limits are selected from \cite{uvguardian} since extensive research was done and also the sensor used was the same one as used in this experiment. UV sensors could be interfaced directly with the android device which could facilitate more flexibilty to gather data. After that is achieved, more users could be encouraged to gather UV data. In this way, crowd sourcing could be used to populate the database eventually helping uses navigate more routes.
 \section{Conclusion}
 It could be concluded that in the worst case, 6 points on a segment are necessary to get accuracy above 75\% for UVA and 4 points on a segment are necessary to get accuracy above 95\% for UVB. In average case, 4 points on a segment are necessary to get accuracy above 75\% for UVA and  3 points on a segment are necessary to get accuracy above 95\% for UVB. The number of points on a segment is not dependend on the length of the segment since the length of the segments are generally small. A web service was developed to estimate UV levels on a path and route the user through the path having the minimum UV value.\\
 
