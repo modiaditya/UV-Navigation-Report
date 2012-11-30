@@ -3,20 +3,20 @@ sample = 4 # for worst case scenario
 uvb = route$uvb # get UVB values
 uvbAccuracy <- vector()
 for(i in 1:100){
-  uvbSample = sample(uvb,sample, replace=TRUE)
-  trueMean = mean(route5$uvb)
+  uvbSample = sample(uvb,sample, replace=FALSE)
+  FALSEMean = mean(route5$uvb)
   sampleMean = mean(uvbSample)
-  t = abs(100-abs((trueMean-sampleMean)/ sampleMean*100))
+  t = abs(100-abs((FALSEMean-sampleMean)/ sampleMean*100))
   uvbAccuracy[i]=t
   }
 sampleA = 4
 uva = route5$uva
 uva10 <- vector()
 for(i in 1:100){
-  uvaSample = sample(uva,sampleA,replace=TRUE)
-  trueMeanA = mean(route5$uva)
+  uvaSample = sample(uva,sampleA,replace=FALSE)
+  FALSEMeanA = mean(route5$uva)
   sampleMeanA = mean(uvaSample)
-  tA = abs(100-abs((trueMeanA-sampleMeanA)/ sampleMeanA*100))
+  tA = abs(100-abs((FALSEMeanA-sampleMeanA)/ sampleMeanA*100))
   uva10[i]=tA
 }
 cat("Average Case","\n")
@@ -30,20 +30,20 @@ sample = 4
 uvb = route5$uvb
 uvb10 <- vector()
 for(i in 1:100){
-  uvbSample = sample(uvb,sample, replace=TRUE)
-  trueMean = mean(route5$uvb)
+  uvbSample = sample(uvb,sample, replace=FALSE)
+  FALSEMean = mean(route5$uvb)
   sampleMean = mean(uvbSample)
-  t = abs(100-abs((trueMean-sampleMean)/ sampleMean*100))
+  t = abs(100-abs((FALSEMean-sampleMean)/ sampleMean*100))
   uvb10[i]=t
 }
 sampleA = 6
 uva = route5$uva
 uva10 <- vector()
 for(i in 1:100){
-  uvaSample = sample(uva,sampleA,replace=TRUE)
-  trueMeanA = mean(route5$uva)
+  uvaSample = sample(uva,sampleA,replace=FALSE)
+  FALSEMeanA = mean(route5$uva)
   sampleMeanA = mean(uvaSample)
-  tA = abs(100-abs((trueMeanA-sampleMeanA)/ sampleMeanA*100))
+  tA = abs(100-abs((FALSEMeanA-sampleMeanA)/ sampleMeanA*100))
   uva10[i]=tA
 }
 cat("UVA: ",mean(uva10))

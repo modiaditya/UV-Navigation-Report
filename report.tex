@@ -198,7 +198,7 @@ Data collection had two main components, UV readings and GPS readings. For UV Re
 \end{figure}
 
 \subsection{Data Collection}
-For collecting the readings, actual walks were done on the selected route ~\ref{fig:Route}. The walks were done by holding the sensor device, a laptop to transfer the readings and an android phone to collect the GPS readings. Readings were taken on 2012-10-16 between 9:05a.m. and 9:42a.m., 2012-10-23 between 9:14a.m. and 9:46a.m., 2012-11-03 between 9:11a.m. and 10:05a.m. , 2012-11-10 between 9:24a.m and 12:12p.m. with clear sky. Protection from the sun rays may be different on different sides of the road depening on height of the buildings, presense of trees, time of days etc. Thus, readings were taken by walking on both sides of the road wherever possible. Figure ~\ref{fig:dataPoints} shows a plot of points where readings were taken by walking along the road.
+For collecting the readings, actual walks were done on the selected route ~\ref{fig:Route}. The walks were done by holding the sensor device, a laptop to transfer the readings and an android phone to collect the GPS readings. Readings were taken on October 16$^{th}$ 2012 between 9:05a.m. and 9:42a.m., October 23$^{rd}$ 2012 between 9:14a.m. and 9:46a.m., Movember 3$^{rd}$ 2012 between 9:11a.m. and 10:05a.m. , November 10$^{th}$ 2012 between 9:24a.m and 12:12p.m. with clear sky. Protection from the sun rays may be different on different sides of the road depening on height of the buildings, presense of trees, time of days etc. Thus, readings were taken by walking on both sides of the road wherever possible. Figure ~\ref{fig:dataPoints} shows a plot of points where readings were taken by walking along the road.
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.35]{dataPoints.png}
@@ -256,7 +256,7 @@ The main aim of the project is to suggest the best route to the user out of the 
 \end{center}
 \end{figure}
 
-In order to determine the various alternate route options that can be taken to travel from source to destination, Google Maps \cite{googleMapsOriginal} data is used. Open Street Maps option was also considered. Google Maps returned alternate route options when source and destination locations were passed where as in Open Street Maps, the output was in form of the nodes en route to the destination. There is a database of nodes on any path which is returned by Open Street Maps. Since alternate paths were necessary in this project, google maps was used. Google Maps returns the various routes that can be taken which are called as {\it Legs} and the various sections of the roads that changes are called as {\it Steps}. In the route selected for the experiment, each of the red lines in Figure ~\ref{fig:Route} indicate each leg and each of the red lines between the markers in Figure ~\ref{fig:stepsInALeg} indicate each step. Minimum number of points needed to assert the UV level with a certain confidence was to be found. Analysis was initially done by taking one step and finding the number of points required on that step. However after realizing that the step was too big to perform analysis, decision was made to break each step into smaller segments. After analyzing various options an Open Street Map API  \cite{openStreetMapsDirections} was used. When passed two end points, the API returns all the nodes in its database which come in between the end points. Thus, a pair of nodes would form a segment. Again, scripts were written to parse the data and extracting the information required for the project. Figure ~\ref{fig:segmentsInAStep} indicates segments within a single step. 
+In order to determine the various alternate route options that can be taken to travel from source to destination, Google Maps \cite{googleMapsOriginal} data is used. Open Street Maps option was also considered. Google Maps returned alternate route options when source and destination locations were passed where as in Open Street Maps, the output was in form of the nodes en route to the destination. There is a database of nodes on any path which is returned by Open Street Maps. Since alternate paths were necessary in this project, google maps was used. Google Maps returns the various routes that can be taken which are called as {\it Legs} and the various sections of the roads that changes are called as {\it Steps}. In the route selected for the experiment, each of the red lines in Figure ~\ref{fig:Route} indicate each leg and each of the red lines between the markers in Figure ~\ref{fig:stepsInALeg} indicate each step. Minimum number of points needed to assert the UV level with a certain confidence was to be found. Analysis was initially done by taking one step and finding the number of points required on that step. The steps that Google Maps returns are too large to do efficient analysis, therefore each step returned by Google Maps needs to be broken down into smaller segments. The steps returned by Google Maps had distances which were not consistent. Also, if we consider large steps, then there may be data at only one end of the step which may not be co-related with data at the other end of the step. Also, there may be trees/buildings on one end and not on the other. So, if steps are broken down, it increases the likelihood of having more accurate estimates of the pedestrian UV exposure along the step. After analyzing various options the Open Street Map API  \cite{openStreetMapsDirections} was used because it breaks the steps down into smaller pieces. On an average, the segment size was around 200 to 300 ft. When passed two end points, the API returns all the nodes in its database which come in between the end points. Thus, a pair of nodes would form a segment. Again, scripts were written to parse the data and extracting the information required for the project. Figure ~\ref{fig:segmentsInAStep} indicates segments within a single step. 
 
 
 
@@ -270,10 +270,9 @@ Data is analyzed to determine the minimum number of points required to get the a
 		\\    \text{2. Select one point randomly}
 		\\    \text{3. Calculate the accuracy with respect to the actual}
 		\\ \quad	\text{averge}
-		\\	\text{4. Select one more point randomly with replacement }
-		\\ \quad	\text{since the result should not be biased and chosing}
-		\\ \quad	\text{a random point is independent of the choice }
-		\\ \quad	\text{of sample made earlier }
+		\\	\text{4. Select one more point randomly without replacement }
+		\\ \quad	\text{since the result should not be biased and accidentally }
+		\\ \quad	\text{choose the same data points} 
 		\\	\text{5. Take the avegare of all the points selected till now}
 		\\    \text{6. Calculate the accuracy with respect to the actual}
 		\\ \quad	\text{ averge}
@@ -296,9 +295,9 @@ for(noOfSample in 1:10){
   uvb = route$uvb #getUVB Readings
   uvbReadingsVector <- vector()
   for(i in 1:10){
-    uvbSample = sample(uvb,noOfSamples, replace=TRUE)
+    uvbSample = sample(uvb,noOfSamples, replace=FALSE)
     sampleMean = mean(uvbSample)
-    accuracy =  abs((trueMean-sampleMean)/ sampleMean*100)
+    accuracy =  (100-abs((trueMean-sampleMean))/ sampleMean*100)
   }
 }\end{lstlisting}
 
@@ -684,6 +683,25 @@ In average case, 4 points on a segment are necessary to get accuracy above 75\% 
 
 \subsubsection{Devising a method to handle segments with less number of samples than minimum required}
 There may be some segments, which may not have the minimum number of readings that is necessary to assert the UV values like the segment in the Figure ~\ref{fig:lessReadings}. 
+
+The problem of some segments not having desired number of readings is countered in the way mentioned below. In that case, a weighted average of the readings from the neighboring segments is taken. The weight is in terms of how far the segment is from the segment, which is currently under consideration and also, the number of readings that the current segment has i.e. the segment which is closer to the segment under consideration and has more readings is given more weight than the segment otherwise since there would be more confidence in the closer segments than segments which are not close relatively. The immediately neighboring segments have a weight of 0.5, the weight is decreased by 0.1 as segments farther from the segment under consideration is taken into account for calculating the UV values. This method was selected since segments, which are near the segment under consideration, have a high correlation of readings with the segment. The window of neighboring segments is expanded till the desired number of readings for the segment is achieved. For instance the green segment in Fig \ref{fig:segmentLessReadings} is taken into consideration. Since it does not have any UV readings, the UV Values need to be taken from the neighboring segments. As per the technique discussed, it will try to find readings from the immediate neighbors, since they are not enough, it will try to expand further till it reaches the segments with 4 readings, when the total number of readings would be greater than the minimum readings necessary. The UV exposure in the green segment would be calculated in Equation ~\ref{eq1}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.4]{segmentLessReadings.png}
+\caption{\small \sl A sample segment with less number of readings}
+\label{fig:segmentLessReadings}
+\end{center}
+\end{figure}
+
+\begin{equation}
+\label{eq1}
+UV=\frac{\ 0.5 \times 3 \times 300+ 0.3 \times 4 \times 200}{\ 0.5 \times 3+0.3 \times 4}
+%UV=\frac{\ (0.5 * 3*300)+ (0.3*4*200)}{\ 0.5*3+0.3*4}
+%a_i^2 =\frac{ \ G_iP_0'}{\ (\frac{\ d_i}{d_0^n})}  =\frac{\ P_0}{d_i^n}
+\end{equation}\\
+
+
+For instance, if the segments in Figure ~\ref{fig:lessReadings} is considered. The segements end points are marked by blue colored markers and the red color markers indicate readings at those points. As observed in the figure, the number of readings are less than the minimum number of readings required. So, a weighted average of the neighboring segments is taken. Since both the segments are immediate neighbors, weight would eventually be proportional to the number of readings in each segment as there would be more confidence in considering readings from the segment that has more readings as compared to considering the segments with less number of readings. 
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.35]{lessReadings.png}
@@ -691,9 +709,7 @@ There may be some segments, which may not have the minimum number of readings th
 \label{fig:lessReadings}
 \end{center}
 \end{figure}
-The problem of some segments not having desired number of readings is countered in the way mentioned below. In that case, a weighted average of the readings from the neighboring segments is taken. The weight is in terms of how far the segment is from the segment, which is currently under consideration and also, the number of readings that the current segment has i.e. the segment which is closer to the segment under consideration and has more readings is given more weight that the segment otherwise since there would be more confidence in the closer segments than segments which are not close relatively. The immediately neighboring segments have a weight of 0.5, the weight is decreased by 0.1 as segments farther from the segment under consideration is taken into account for calculating the UV values. This method was selected since segments, which are near the segment under consideration, have a high correlation of readings with the segment. The window of neighboring segments is expanded till the desired number of readings for the segment is achieved. 
 
-For instance, if the segments in Figure ~\ref{fig:lessReadings} is considered. The segements end points are marked by blue colored markers and the red color markers indicate readings at those points. As observed in the figure, the number of readings are less than the minimum number of readings required. So, a weighted average of the neighboring segments is taken. Since both the segments are immediate neighbors, weight would eventually be proportional to the number of readings in each segment as there would be more confidence in considering readings from the segment that has more readings as compared to considering the segments with less number of readings. 
 
 \newpage
 \subsection{Web Service Developement}
@@ -739,7 +755,7 @@ sampleSet = 4 # for worst case scenario
 uvb = route$uvb # get UVB values
 uvbAccuracy <- vector()
 for(i in 1:100){
-  uvbSample = sample(uvb,sampleSet, replace=TRUE)
+  uvbSample = sample(uvb,sampleSet, replace=FALSE)
   trueMean = mean(route5$uvb)
   sampleMean = mean(uvbSample)
   t = abs(100-abs((trueMean-sampleMean)/ sampleMean*100))
