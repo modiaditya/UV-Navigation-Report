@@ -1,16 +1,17 @@
-\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{Approach}{}% 2
-\BOOKMARK [1][-]{section.3}{Implementation}{}% 3
-\BOOKMARK [2][-]{subsection.3.1}{Route Selection}{section.3}% 4
-\BOOKMARK [2][-]{subsection.3.2}{Sensor Device Selection}{section.3}% 5
-\BOOKMARK [2][-]{subsection.3.3}{Data Collection}{section.3}% 6
-\BOOKMARK [2][-]{subsection.3.4}{Data Analysis}{section.3}% 7
-\BOOKMARK [3][-]{subsubsection.3.4.1}{Data Cleansing}{subsection.3.4}% 8
-\BOOKMARK [3][-]{subsubsection.3.4.2}{Determining minimum number of sample points}{subsection.3.4}% 9
-\BOOKMARK [3][-]{subsubsection.3.4.3}{Devising a method to handle segments with less number of samples than minimum required}{subsection.3.4}% 10
-\BOOKMARK [2][-]{subsection.3.5}{Web Service Developement}{section.3}% 11
-\BOOKMARK [2][-]{subsection.3.6}{Navigation Web Application}{section.3}% 12
-\BOOKMARK [1][-]{section.4}{Experiment}{}% 13
-\BOOKMARK [1][-]{section.5}{Future Work}{}% 14
-\BOOKMARK [1][-]{section.6}{Conclusion}{}% 15
-\BOOKMARK [1][-]{section.7}{References}{}% 16
+\BOOKMARK [1][-]{section.1}{Abstract}{}% 1
+\BOOKMARK [1][-]{section.2}{Introduction}{}% 2
+\BOOKMARK [1][-]{section.3}{Approach}{}% 3
+\BOOKMARK [1][-]{section.4}{Implementation}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{Route Selection}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{Sensor Device Selection}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.3}{Data Collection}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.4}{Data Analysis}{section.4}% 8
+\BOOKMARK [3][-]{subsubsection.4.4.1}{Data Cleansing}{subsection.4.4}% 9
+\BOOKMARK [3][-]{subsubsection.4.4.2}{Determining minimum number of sample points}{subsection.4.4}% 10
+\BOOKMARK [3][-]{subsubsection.4.4.3}{Devising a method to handle segments with less number of samples than minimum required}{subsection.4.4}% 11
+\BOOKMARK [2][-]{subsection.4.5}{Web Service Developement}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.6}{Navigation Web Application}{section.4}% 13
+\BOOKMARK [1][-]{section.5}{Experiment}{}% 14
+\BOOKMARK [1][-]{section.6}{Future Work}{}% 15
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 16
+\BOOKMARK [1][-]{section.8}{References}{}% 17
